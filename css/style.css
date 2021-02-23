@@ -215,7 +215,7 @@ h2 {
 }
 
 h3 {
-    font-size: 25px;
+    font-size: 35px;
 }
 
 h4 {
@@ -223,7 +223,7 @@ h4 {
 }
 
 .headerTempurature {
-  font-size: 110px;
+  font-size: 100px;
 }
 
 .temperatureInformation {
@@ -232,13 +232,14 @@ h4 {
 
 span {
   font-weight: bold;
+  font-size: 20px;
 }
 
 
 /*
 desktop version
 */
-@media all and (min-width: 1000px) {
+@media all and (min-width: 1100px) {
   .headerCity, .headerInformation, .favourites, .favouritesAddCity, .city {
     flex: 1;
   }
