@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 * {
     box-sizing: border-box;
 }
 
 body {
   background-color: #8000ff;
+  font-family: 'Press Start 2P';
 }
 
 /*
@@ -102,11 +105,17 @@ header {
   width: 100%;
 }
 
+footer {
+  background-color: #CCCCFF;
+  width: 100%;
+  text-align: center;
+}
 
 /*
 buttons
 */
 .refreshButton {
+  font-family: 'Press Start 2P';
   font-size: 20px;
   color: white;
   text-decoration: none;
@@ -126,6 +135,7 @@ buttons
 }
 
 .round {
+  font-family: 'Press Start 2P';
   font-size: 20px;
   color: white;
   text-decoration: none;
