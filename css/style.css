@@ -208,3 +208,12 @@ h4 {
 span {
   font-weight: bold;
 }
+
+
+/*
+desktop version
+*/
+@media all and (min-width: 1000px) {
+    .headerCity, .headerInformation, .favourites, .favouritesAddCity, .city {
+        flex: 1;
+    }
