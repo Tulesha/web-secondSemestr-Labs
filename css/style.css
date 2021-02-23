@@ -7,6 +7,7 @@
 body {
   background-color: #8000ff;
   font-family: 'Press Start 2P';
+  overflow-x: scroll;
 }
 
 /*
@@ -19,14 +20,15 @@ div
 }
 
 .wrapper > * {
-    padding: 15px;
-    margin: 15px;
+    padding: 1vmax;
+    margin: 1vmax;
     flex: 1 100%;
-    border-radius: 10px;
+    border-radius: 1vmax;
 }
 
 header {
-  height: 50px;
+  height: 5vmax;
+  width: 25vmax;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,7 +37,8 @@ header {
 }
 
 .headerCity {
-  height: 300px;
+  height: 25vmax;
+  width: 25vmax;
   text-align: left;
 
   background-color: #CCCCFF;
@@ -45,11 +48,12 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 200px;
+  height: 12vmax;
 }
 
 .headerInformation {
-  height: 300px;
+  height: 25vmax;
+  width: 25vmax;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,7 +68,8 @@ header {
 }
 
 .favourites {
-  height: 60px;
+  height: 5vmax;
+  width: 25vmax;
 
   display: flex;
   justify-content: flex-start;
@@ -74,7 +79,8 @@ header {
 }
 
 .favouritesAddCity {
-  height: 60px;
+  height: 5vmax;
+  width: 25vmax;
 
   display: flex;
   justify-content: space-between;
@@ -84,9 +90,9 @@ header {
 }
 
 .city {
-  margin-top: 50px;
-  height: 350px;
-  width: 100%;
+  margin-top: 3vmax;
+  height: 25vmax;
+  width: 25vmax;
 
   display: flex;
   flex-direction: column;
@@ -101,8 +107,8 @@ header {
   justify-content: space-between;
   align-items: center;
 
-  height: 70px;
-  width: 100%;
+  height: 7vmax;
+  width: 45vmax;
 }
 
 footer {
@@ -116,41 +122,44 @@ buttons
 */
 .refreshButton {
   font-family: 'Press Start 2P';
-  font-size: 20px;
+  text-align: center;
+  width: 20vmax;
+  height: 4.5vmax;
+  font-size: 2vmax;
   color: white;
   text-decoration: none;
-  padding: 8px 30px;
-  border-radius: 3px;
+  border-radius: 100vmax;
   background: #00BFFF;
   transition: 0.2s;
-  margin-left: 20px;
+  margin-left: 2%;
 }
 
 .refreshButton:hover { background: #80A6FF; }
 
 .refreshButton:active {
   background: #00FFFF;
-  box-shadow: 0 3px #00FFFF inset;
+  box-shadow: 0 3vmax #00FFFF inset;
   color: black;
 }
 
 .round {
   font-family: 'Press Start 2P';
-  font-size: 20px;
+  width: 8vmax;
+  height: 4.5vmax;
+  font-size: 2vmax;
   color: white;
   text-decoration: none;
-  padding: 8px 30px;
-  border-radius: 3px;
+  border-radius: 100vmax;
   background: #00BFFF;
   transition: 0.2s;
-  margin-left: 20px;
+  margin-left: 2%;
 }
 
 .round:hover { background: #80A6FF; }
 
 .round:active {
   background: #00FFFF;
-  box-shadow: 0 3px #00FFFF inset;
+  box-shadow: 0 3vmax #00FFFF inset;
   color: black;
 }
 
@@ -159,14 +168,14 @@ buttons
 images
 */
 .imgHeaderCity {
-  width: 150px;
-  height: 150px;
+  width: 12vmax;
+  height: 12vmax;
   float: left;
 }
 
 .imgCityWeather {
-  width: 70px;
-  height: 70px;
+  width: 6vmax;
+  height: 6vmax;
 }
 
 
@@ -176,14 +185,12 @@ ul
 ul {
   list-style-type: none;
   padding: 0;
+  margin: 2vmax;
   width: 100%;
 }
 
 ul li {
-  padding: 8px;
-  margin: 3px;
-  font-size: 20px;
-  border-radius: 5px;
+  padding: 0.5vmax;
 
   display: flex;
   justify-content: space-between;
@@ -194,9 +201,9 @@ ul li {
 input
 */
 .addNewCity {
-  width: 300px;
-  font-size: 20px;
-  border-radius: 5px;
+  height: 3.5vmax;
+  font-size: 1vmax;
+  border-radius: 5vmax;
   font-family: inherit;
   padding: 0.25em 0.5em;
   flex: 1;
@@ -207,40 +214,51 @@ input
 fonts
 */
 h1 {
-    font-size: 35px;
+    font-size: 3vmax;
 }
 
 h2 {
-    font-size: 35px;
+    font-size: 3vmax;
 }
 
 h3 {
-    font-size: 35px;
+    font-size: 3vmax;
 }
 
 h4 {
-  font-size: 25px;
+  font-size: 2vmax;
 }
 
 .headerTempurature {
-  font-size: 100px;
+  font-size: 5vmax;
 }
 
 .temperatureInformation {
-  font-size: 25px;
+  font-size: 2vmax;
 }
 
 span {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1.5vmax;
+}
+
+.copyright {
+  font-size: 1.5vmax;
+  font-weight: bold;
 }
 
 
 /*
 desktop version
 */
-@media all and (min-width: 1100px) {
+@media all and (min-width: 900px) {
   .headerCity, .headerInformation, .favourites, .favouritesAddCity, .city {
     flex: 1;
+  }
+}
+
+@media all and (min-width: 320px) {
+  body {
+    overflow-x: hidden;
   }
 }
