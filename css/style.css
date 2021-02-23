@@ -1,0 +1,210 @@
+* {
+    box-sizing: border-box;
+}
+
+/*
+div
+*/
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+.wrapper > * {
+    padding: 10px;
+    margin: 10px;
+    flex: 1 100%;
+    border-radius: 30px;
+}
+
+header {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerCity {
+  height: 300px;
+  text-align: left;
+}
+
+.headerCityTempurature {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
+}
+
+.headerInformation {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.favourites {
+  height: 60px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.favouritesAddCity {
+  height: 60px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.city {
+  margin-top: 50px;
+  height: 300px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cityInformation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 70px;
+  width: 100%;
+}
+
+
+/*
+buttons
+*/
+.refreshButton {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 8px 30px;
+  border-radius: 3px;
+  background: #00BFFF;
+  transition: 0.2s;
+  margin-left: 20px;
+}
+
+.refreshButton:hover { background: #80A6FF; }
+
+.refreshButton:active {
+  background: #00FFFF;
+  box-shadow: 0 3px #00FFFF inset;
+  color: black;
+}
+
+.round {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 8px 30px;
+  border-radius: 3px;
+  background: #00BFFF;
+  transition: 0.2s;
+  margin-left: 20px;
+}
+
+.round:hover { background: #80A6FF; }
+
+.round:active {
+  background: #00FFFF;
+  box-shadow: 0 3px #00FFFF inset;
+  color: black;
+}
+
+
+/*
+images
+*/
+.imgHeaderCity {
+  width: 150px;
+  height: 150px;
+  float: left;
+}
+
+.imgCityWeather {
+  width: 70px;
+  height: 70px;
+}
+
+
+/*
+ul
+*/
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+ul li {
+  padding: 8px;
+  margin: 3px;
+  font-size: 20px;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/*
+input
+*/
+.addNewCity {
+  width: 300px;
+  font-size: 20px;
+  border-radius: 5px;
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  flex: 1;
+}
+
+
+/*
+fonts
+*/
+h1 {
+    font-size: 35px;
+}
+
+h2 {
+    font-size: 35px;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+h4 {
+  font-size: 25px;
+}
+
+.headerTempurature {
+  font-size: 110px;
+}
+
+.temperatureInformation {
+  font-size: 25px;
+}
+
+span {
+  font-weight: bold;
+}
