@@ -251,7 +251,7 @@ span {
 /*
 desktop version
 */
-@media all and (min-width: 900px) {
+@media all and (min-width: 1000px) {
   .headerCity, .headerInformation, .favourites, .favouritesAddCity, .city {
     flex: 1;
   }
