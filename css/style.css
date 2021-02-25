@@ -14,21 +14,30 @@ body {
 div
 */
 .wrapper {
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
   text-align: center;
+  width: 100%;
 }
 
 .wrapper > * {
     padding: 1vmax;
     margin: 1vmax;
-    flex: 1 100%;
     border-radius: 1vmax;
 }
 
+.wrapperMain {
+  display: grid;
+  width: 100%;
+}
+
+.wrapperMain > * {
+  padding: 1vmax;
+  margin: 1vmax;
+  border-radius: 1vmax;
+}
+
+
 header {
-  height: 5vmax;
-  width: 25vmax;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,8 +46,6 @@ header {
 }
 
 .headerCity {
-  height: 25vmax;
-  width: 25vmax;
   text-align: left;
 
   background-color: #CCCCFF;
@@ -48,29 +55,16 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 12vmax;
 }
 
 .headerInformation {
-  height: 25vmax;
-  width: 25vmax;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #CCCCFF;
 }
 
-.break {
-  flex-basis: 100%;
-  height: 0;
-  margin: 0;
-  padding: 0;
-}
-
 .favourites {
-  height: 5vmax;
-  width: 25vmax;
-
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -79,9 +73,6 @@ header {
 }
 
 .favouritesAddCity {
-  height: 5vmax;
-  width: 25vmax;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,15 +80,21 @@ header {
   background-color: #CCCCFF;
 }
 
+.cities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5vmax;
+}
+
 .city {
   margin-top: 3vmax;
-  height: 25vmax;
-  width: 25vmax;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 1vmax;
 
   background-color: #CCCCFF;
 }
@@ -107,13 +104,11 @@ header {
   justify-content: space-between;
   align-items: center;
 
-  height: 7vmax;
-  width: 45vmax;
+  width: 90%;
 }
 
 footer {
   background-color: #CCCCFF;
-  width: 100%;
   text-align: center;
 }
 
@@ -186,7 +181,7 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 2vmax;
-  width: 100%;
+  width: 95%;
 }
 
 ul li {
@@ -215,6 +210,7 @@ fonts
 */
 h1 {
     font-size: 3vmax;
+    display: inline;
 }
 
 h2 {
@@ -251,9 +247,12 @@ span {
 /*
 desktop version
 */
-@media all and (min-width: 1000px) {
-  .headerCity, .headerInformation, .favourites, .favouritesAddCity, .city {
-    flex: 1;
+@media screen and (max-width: 1000px) {
+  .cities {
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 }
 
