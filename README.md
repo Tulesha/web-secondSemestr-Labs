@@ -9,7 +9,7 @@
 Также проверьте, что до ширины экрана в 320px у вас не показывается горизонтальный скролл
 
 ## Инструкция по установке:
-[Ссылка на GitHub Pages](https://tulesha.github.io/web-secondSemestr-Lab1/)
+[Ссылка на GitHub Pages](https://tulesha.github.io/web-secondSemestr-Labs/)
 
 ## Автор:
 [Tulesha](https://github.com/Tulesha)
