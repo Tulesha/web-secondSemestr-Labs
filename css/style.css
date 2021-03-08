@@ -8,31 +8,34 @@ body {
   background-color: #8000ff;
   font-family: 'Press Start 2P';
   overflow-x: scroll;
+
+  display: grid;
+  text-align: center;
+  width: 100%;
+
+  padding: 4%;
 }
 
 /*
 div
 */
-.wrapper {
-  display: grid;
-  text-align: center;
-  width: 100%;
-}
 
-.wrapper > * {
+body > * {
     padding: 1%;
-    margin: 1%;
+    margin-top: 3%;
     border-radius: 1vmax;
 }
 
-.wrapperMain {
+main {
   display: grid;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.wrapperMain > * {
+main > * {
   padding: 1%;
-  margin: 1%;
+  margin-top: 3%;
   border-radius: 1vmax;
 }
 
@@ -184,7 +187,7 @@ ul {
 }
 
 ul li {
-  padding: 0.5vmax;
+  padding: 0.2vmax;
 
   display: flex;
   justify-content: space-between;
@@ -232,9 +235,9 @@ h4 {
   font-size: 2vmax;
 }
 
-span {
+.weatherInfo {
   font-weight: bold;
-  font-size: 1.5vmax;
+  font-size: 1.2vmax;
 }
 
 .copyright {
