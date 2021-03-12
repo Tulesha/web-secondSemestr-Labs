@@ -249,7 +249,7 @@ h4 {
 /*
 desktop version
 */
-@media all and (max-width: 1000px) {
+@media all and (max-width: 768px) {
   .cities {
     grid-template-columns: 1fr;
     width: 100%;
