@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -11,9 +11,11 @@ body {
 
   display: grid;
   text-align: center;
-  width: 100%;
 
-  padding: 4%;
+  margin: 15px auto;
+  padding: 15px;
+
+  max-width: 1200px;
 }
 
 /*
@@ -21,22 +23,23 @@ div
 */
 
 body > * {
-    padding: 1%;
-    margin-top: 3%;
-    border-radius: 1vmax;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
 }
 
 main {
   display: grid;
-  width: 100%;
   margin: 0;
   padding: 0;
+
+  max-width: 1200px;
 }
 
 main > * {
-  padding: 1%;
-  margin-top: 3%;
-  border-radius: 1vmax;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
 }
 
 
@@ -46,6 +49,8 @@ header {
   align-items: center;
 
   background-color: #CCCCFF;
+
+  max-width: 1200px;
 }
 
 .headerCity {
@@ -86,18 +91,17 @@ header {
 .cities {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 5vmax;
+  grid-column-gap: 30px;
 }
 
 .city {
-  margin-top: 5%;
-  width: 100%;
+  margin-top: 20px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 1vmax;
+  border-radius: 10px;
 
   background-color: #CCCCFF;
 }
@@ -106,13 +110,15 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  width: 90%;
+  width: 100%;
+  padding: 20px;
 }
 
 footer {
   background-color: #CCCCFF;
   text-align: center;
+
+  max-width: 1200px;
 }
 
 /*
@@ -121,43 +127,41 @@ buttons
 .refreshButton {
   font-family: 'Press Start 2P';
   text-align: center;
-  width: 20vmax;
-  height: 4.5vmax;
-  font-size: 2vmax;
+  width: 300px;
+  height: 80px;
+  font-size: 30px;
   color: white;
   text-decoration: none;
-  border-radius: 100vmax;
+  border-radius: 30px;
   background: #00BFFF;
   transition: 0.2s;
-  margin-left: 2%;
 }
 
 .refreshButton:hover { background: #80A6FF; }
 
 .refreshButton:active {
   background: #00FFFF;
-  box-shadow: 0 3vmax #00FFFF inset;
+  box-shadow: 0 30px #00FFFF inset;
   color: black;
 }
 
 .round {
   font-family: 'Press Start 2P';
-  width: 8vmax;
-  height: 4.5vmax;
-  font-size: 2vmax;
+  width: 80px;
+  height: 50px;
+  font-size: 20px;
   color: white;
   text-decoration: none;
-  border-radius: 100vmax;
+  border-radius: 30px;
   background: #00BFFF;
   transition: 0.2s;
-  margin-left: 2%;
 }
 
 .round:hover { background: #80A6FF; }
 
 .round:active {
   background: #00FFFF;
-  box-shadow: 0 3vmax #00FFFF inset;
+  box-shadow: 0 30px #00FFFF inset;
   color: black;
 }
 
@@ -166,13 +170,13 @@ buttons
 images
 */
 .imgHeaderCity {
-  width: 12vmax;
-  height: 12vmax;
+  width: 150px;
+  height: 150px;
 }
 
 .imgCityWeather {
-  width: 6vmax;
-  height: 6vmax;
+  width: 80px;
+  height: 80px;
 }
 
 
@@ -182,12 +186,12 @@ ul
 ul {
   list-style-type: none;
   padding: 0;
-  margin: 2%;
+  margin: 10px;
   width: 95%;
 }
 
 ul li {
-  padding: 0.2vmax;
+  padding: 4px;
 
   display: flex;
   justify-content: space-between;
@@ -198,11 +202,11 @@ ul li {
 input
 */
 .addNewCity {
-  height: 3.5vmax;
-  font-size: 1vmax;
-  border-radius: 5vmax;
+  height: 50px;
+  font-size: 15px;
+  border-radius: 30px;
   font-family: inherit;
-  padding: 0.5% 0.5%;
+  padding: 5px 5px;
   flex: 1;
 }
 
@@ -211,37 +215,36 @@ input
 fonts
 */
 h1 {
-    font-size: 3vmax;
-    display: inline;
+    font-size: 40px;
 }
 
 h2 {
-    font-size: 3vmax;
+    font-size: 30px;
 }
 
 h3 {
-    font-size: 3vmax;
+    font-size: 30px;
 }
 
 h4 {
-  font-size: 2vmax;
+  font-size: 20px;
 }
 
 .headerTempurature {
-  font-size: 5vmax;
+  font-size: 40px;
 }
 
 .temperatureInformation {
-  font-size: 2vmax;
+  font-size: 20px;
 }
 
 .weatherInfo {
   font-weight: bold;
-  font-size: 1.2vmax;
+  font-size: 15px;
 }
 
 .copyright {
-  font-size: 1.5vmax;
+  font-size: 15px;
   font-weight: bold;
 }
 
@@ -252,7 +255,6 @@ desktop version
 @media all and (max-width: 768px) {
   .cities {
     grid-template-columns: 1fr;
-    width: 100%;
     margin: 0;
     padding: 0;
   }
