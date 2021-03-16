@@ -38,9 +38,18 @@ function mainCityFetch (url) {
 }
 
 function printMainCityWeather(data) {
-  document.querySelector('h2').textContent = data.name;
-  document.querySelector('.headerTempurature').innerHTML = Math.round(data.main.temp) + '&#176;C';
-  document.getElementById("imgHeaderCity").src = `${icons}${data.weather[0]['icon']}@2x.png`;
+  let headerCity = document.querySelector('.headerCity');
+  console.log(headerCity)
+  let cityName = document.createElement("h2");
+  cityName.textContent = data.name;
+  headerCity.appendChild(cityName);
+
+  let headerCityChild = document.createElement("div");
+  headerCityChild.setAttribute("class", "headerCityChild");
+  headerCityChild.innerHTML = `<img src="${icons}${data.weather[0]['icon']}@2x.png" class="imgHeaderCity">\n` +
+                              `<p class="headerTempurature">${Math.round(data.main.temp) + '&#176;C'}</p>\n`;
+  headerCity.appendChild(headerCityChild)
+
 
   let ul = document.getElementById("mainCityUl");
   fillUl(ul, data);
