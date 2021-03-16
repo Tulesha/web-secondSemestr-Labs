@@ -4,6 +4,7 @@ const icons = "https://openweathermap.org/img/wn/"
 
 window.onload = function () {
   navigator.geolocation.getCurrentPosition(getCurrentLocationWeather, getDefaultLocationWeather)
+  console.log(window.localStorage)
 }
 
 function getCurrentLocationWeather(pos) {
@@ -32,14 +33,29 @@ function mainCityFetch (url) {
       printMainCityWeather(data)
     })
   }
-    catch (e) {
-      alert(e);
-    }
+  catch (e) {
+    alert(e);
+  }
+}
+
+function otherCityFetch (url) {
+  try {
+    fetch(url)
+    .then(function (resp) {return resp.json() })
+    .then(function (data) {
+      console.log(data);
+      printOtherCityWeather(data)
+    })
+  }
+  catch (e) {
+    alert(e);
+  }
 }
 
 function printMainCityWeather(data) {
   let headerCity = document.querySelector('.headerCity');
-  console.log(headerCity)
+  headerCity.innerHTML = "";
+
   let cityName = document.createElement("h2");
   cityName.textContent = data.name;
   headerCity.appendChild(cityName);
@@ -51,8 +67,15 @@ function printMainCityWeather(data) {
   headerCity.appendChild(headerCityChild)
 
 
-  let ul = document.getElementById("mainCityUl");
+  let headerInformation = document.querySelector(".headerInformation");
+  headerInformation.innerHTML = "";
+  let ul = document.createElement("ul");
+  headerInformation.appendChild(ul);
   fillUl(ul, data);
+}
+
+function printOtherCityWeather(data) {
+
 }
 
 function fillUl(ul, data) {
@@ -80,4 +103,10 @@ function fillUl(ul, data) {
   coordinates.innerHTML = `<p class="weatherInfo">Coordinates</p>\n` +
                        `<p class="weatherInfo">[${data.coord.lat}, ${data.coord.lon}]</p>\n`;
   ul.appendChild(coordinates)
+}
+
+function updateGeo() {
+  document.querySelector('.headerCity').innerHTML = "<p>Loading...</p>";
+  document.querySelector('.headerInformation').innerHTML = "<p>Loading...</p>";
+  navigator.geolocation.getCurrentPosition(getCurrentLocationWeather, getDefaultLocationWeather)
 }
