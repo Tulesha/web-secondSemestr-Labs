@@ -4,7 +4,16 @@ const icons = "https://openweathermap.org/img/wn/"
 
 window.onload = function () {
   navigator.geolocation.getCurrentPosition(getCurrentLocationWeather, getDefaultLocationWeather)
-  console.log(window.localStorage)
+  console.log(window.localStorage);
+
+  let keys = Object.keys(window.localStorage);
+  keys.sort()
+
+  for (const key of keys) {
+    console.log(key);
+    console.log(window.localStorage.getItem(key));
+    otherCityStorageFetch(`${query}&appid=${appid}&q=${window.localStorage.getItem(key)}`);
+  }
 }
 
 // Получение текущих координат
@@ -40,8 +49,30 @@ function mainCityFetch (url) {
   })
 }
 
-// Запрос на дополнительный город
-function otherCityFetch () {
+// Запрос на добавление города из хранилища
+function otherCityStorageFetch (url) {
+  fetch(url)
+  .then(function (resp) {return resp.json() })
+  .then(function (data) {
+    if (data.message === "city not found" || data.message === "Nothing to geocode") {
+      alert("404: Bad request")
+    }
+    else {
+      let cities = document.querySelector('.cities');
+      let city = document.createElement("div");
+      city.setAttribute("class", "city");
+
+      city.innerHTML = "<p>Loading...</p>"
+
+      cities.appendChild(city)
+
+      printCityFromStorage(data, cities, city)
+    }
+  })
+}
+
+// Запрос на добавление дополнительного город
+function otherCityAddFetch () {
   fetch(`${query}&appid=${appid}&q=${document.querySelector('.addNewCity').value}`)
   .then(function (resp) {return resp.json() })
   .then(function (data) {
@@ -49,10 +80,21 @@ function otherCityFetch () {
       alert("404: Bad request")
     }
     else {
-      printOtherCityWeather(data)
+      let cities = document.querySelector('.cities');
+      let city = document.createElement("div");
+      city.setAttribute("class", "city");
+
+      city.innerHTML = "<p>Loading...</p>"
+
+      cities.appendChild(city)
+
+
+      printOtherAddCityWeather(data, cities, city);
     }
   })
 }
+
+
 
 // Вывод основного города
 function printMainCityWeather(data) {
@@ -78,12 +120,20 @@ function printMainCityWeather(data) {
 }
 
 // Вывод дополнительного города
-function printOtherCityWeather(data) {
-  document.querySelector('.addNewCity').value = "";
-  let cities = document.querySelector('.cities');
+function printOtherAddCityWeather(data, cities, city) {
+  let keys = Object.keys(window.localStorage);
 
-  let city = document.createElement("div");
-  city.setAttribute("class", "city");
+  for (const key of keys) {
+    if (window.localStorage.getItem(key) === data.name) {
+      alert("This city already exists");
+      city.remove()
+      return
+    }
+  }
+
+  document.querySelector('.addNewCity').value = "";
+
+  city.innerHTML = "";
 
   let cityInformation = document.createElement("div");
   cityInformation.setAttribute("class", "cityInformation");
@@ -91,47 +141,68 @@ function printOtherCityWeather(data) {
   cityInformation.innerHTML = `<h4>${data.name}</h4>\n` +
                                 `<p class="temperatureInformation">${Math.round(data.main.temp) + '&#176;C'}</p>\n` +
                                 `<img src="${icons}${data.weather[0]['icon']}@2x.png" class="imgCityWeather">\n` +
-                                `<button type="submit" class="round">×</button>`;
+                                `<button type="submit" class="round" onclick="deleteCity(this)">×</button>`;
   city.appendChild(cityInformation);
 
   let ul = document.createElement("ul");
   city.appendChild(ul);
   fillUl(ul, data);
 
-  cities.appendChild(city)
-  window.localStorage.setItem(window.localStorage.length, data.name);
+  if (window.localStorage.length === 0) {
+    window.localStorage.setItem(0, data.name);
+
+  }
+  else {
+    window.localStorage.setItem(Math.max.apply(null, keys) + 1, data.name);
+  }
+  console.log(window.localStorage)
+}
+
+// Вывод доп города из хранилища
+function printCityFromStorage(data, cities, city) {
+
+  city.innerHTML = "";
+
+  let cityInformation = document.createElement("div");
+  cityInformation.setAttribute("class", "cityInformation");
+
+  cityInformation.innerHTML = `<h4>${data.name}</h4>\n` +
+                                `<p class="temperatureInformation">${Math.round(data.main.temp) + '&#176;C'}</p>\n` +
+                                `<img src="${icons}${data.weather[0]['icon']}@2x.png" class="imgCityWeather">\n` +
+                                `<button type="submit" class="round" onclick="deleteCity(this)">×</button>`;
+  city.appendChild(cityInformation);
+
+  let ul = document.createElement("ul");
+  city.appendChild(ul);
+  fillUl(ul, data);
 }
 
 // Заполнение ul
 function fillUl(ul, data) {
-  try {
-    let wind = document.createElement("li");
-    wind.innerHTML = `<p class="weatherInfo">Wind</p>\n` +
+  let wind = document.createElement("li");
+  wind.innerHTML = `<p class="weatherInfo">Wind</p>\n` +
                      `<p class="weatherInfo">${data.wind.speed} m/s</p>\n`;
-    ul.appendChild(wind);
+  ul.appendChild(wind);
 
-    let cloudy = document.createElement("li");
-    cloudy.innerHTML = `<p class="weatherInfo">Cloudy</p>\n` +
+  let cloudy = document.createElement("li");
+  cloudy.innerHTML = `<p class="weatherInfo">Cloudy</p>\n` +
                        `<p class="weatherInfo">${data.weather[0]['description']}</p>\n`;
-    ul.appendChild(cloudy);
+  ul.appendChild(cloudy);
 
-    let pressure = document.createElement("li");
-    pressure.innerHTML = `<p class="weatherInfo">Pressure</p>\n` +
+  let pressure = document.createElement("li");
+  pressure.innerHTML = `<p class="weatherInfo">Pressure</p>\n` +
                          `<p class="weatherInfo">${data.main.pressure} hpa</p>\n`;
-    ul.appendChild(pressure)
+  ul.appendChild(pressure)
 
-    let humidity = document.createElement("li");
-    humidity.innerHTML = `<p class="weatherInfo">Humidity</p>\n` +
+  let humidity = document.createElement("li");
+  humidity.innerHTML = `<p class="weatherInfo">Humidity</p>\n` +
                          `<p class="weatherInfo">${data.main.humidity} %</p>\n`;
-    ul.appendChild(humidity)
+  ul.appendChild(humidity)
 
-    let coordinates = document.createElement("li");
-    coordinates.innerHTML = `<p class="weatherInfo">Coordinates</p>\n` +
+  let coordinates = document.createElement("li");
+  coordinates.innerHTML = `<p class="weatherInfo">Coordinates</p>\n` +
                          `<p class="weatherInfo">[${data.coord.lat}, ${data.coord.lon}]</p>\n`;
-    ul.appendChild(coordinates)
-  } catch (e) {
-    console.log(e);
-  }
+  ul.appendChild(coordinates)
 }
 
 // Обработка Refresh
@@ -139,4 +210,20 @@ function updateGeo() {
   document.querySelector('.headerCity').innerHTML = "<p>Loading...</p>";
   document.querySelector('.headerInformation').innerHTML = "<p>Loading...</p>";
   navigator.geolocation.getCurrentPosition(getCurrentLocationWeather, getDefaultLocationWeather)
+}
+
+// Обработка delete
+function deleteCity(obj) {
+  let cityName = obj.parentElement.firstChild.textContent
+
+  let keys = Object.keys(window.localStorage);
+
+  for (const key of keys) {
+    if (window.localStorage.getItem(key) === cityName) {
+      window.localStorage.removeItem(key);
+      obj.parentElement.parentElement.remove();
+      console.log(window.localStorage)
+      return
+    }
+  }
 }
