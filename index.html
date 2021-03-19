@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
   </head>
-  <body>
+  <body onresize="buttonWidth()">
       <header>
         <h1>Weather</h1>
-        <button type="submit" class="refreshButton" onclick="updateGeo()">Refresh</button>
+        <button type="submit" class="refreshButton" onclick="updateGeo()" id="refresh">Refresh</button>
       </header>
 
       <main>

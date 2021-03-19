@@ -127,14 +127,19 @@ buttons
 .refreshButton {
   font-family: 'Press Start 2P';
   text-align: center;
-  width: 300px;
-  height: 80px;
-  font-size: 30px;
+  width: 200px;
+  height: 60px;
+  font-size: 25px;
   color: white;
   text-decoration: none;
   border-radius: 30px;
   background: #00BFFF;
   transition: 0.2s;
+}
+
+.refreshButtonImg {
+  width: 25px;
+  height: 25px;
 }
 
 .refreshButton:hover { background: #80A6FF; }
@@ -203,11 +208,11 @@ input
 */
 .addNewCity {
   height: 50px;
+  width: 80%;
   font-size: 15px;
   border-radius: 30px;
   font-family: inherit;
   padding: 5px 5px;
-  flex: 1;
 }
 
 
@@ -215,32 +220,32 @@ input
 fonts
 */
 h1 {
-    font-size: 40px;
+    font-size: 35px;
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 25px;
 }
 
 h3 {
-    font-size: 30px;
+    font-size: 25px;
 }
 
 h4 {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .headerTempurature {
-  font-size: 40px;
+  font-size: 35px;
 }
 
 .temperatureInformation {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .weatherInfo {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 10px;
 }
 
 .copyright {
@@ -257,6 +262,11 @@ desktop version
     grid-template-columns: 1fr;
     margin: 0;
     padding: 0;
+  }
+
+  .refreshButton {
+    width: 60px;
+    height: 60px;
   }
 }
 

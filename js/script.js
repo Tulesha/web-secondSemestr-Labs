@@ -4,14 +4,11 @@ const icons = "https://openweathermap.org/img/wn/"
 
 window.onload = function () {
   navigator.geolocation.getCurrentPosition(getCurrentLocationWeather, getDefaultLocationWeather)
-  console.log(window.localStorage);
 
   let keys = Object.keys(window.localStorage);
   keys.sort()
 
   for (const key of keys) {
-    console.log(key);
-    console.log(window.localStorage.getItem(key));
     otherCityStorageFetch(`${query}&appid=${appid}&q=${window.localStorage.getItem(key)}`);
   }
 }
@@ -27,8 +24,6 @@ function getCurrentLocationWeather(pos) {
 
 // Дефолтные координаты
 function getDefaultLocationWeather() {
-  alert('You will get weather by default city')
-
   let city = 'Prague';
 
   let url = `${query}&appid=${appid}&q=${city}`;
@@ -41,7 +36,7 @@ function mainCityFetch (url) {
   .then(function (resp) {return resp.json() })
   .then(function (data) {
     if (data.message === "city not found" || data.message === "Nothing to geocode") {
-      alert("404: Bad request")
+      return;
     }
     else {
       printMainCityWeather(data)
@@ -55,7 +50,7 @@ function otherCityStorageFetch (url) {
   .then(function (resp) {return resp.json() })
   .then(function (data) {
     if (data.message === "city not found" || data.message === "Nothing to geocode") {
-      alert("404: Bad request")
+      return;
     }
     else {
       let cities = document.querySelector('.cities');
@@ -77,7 +72,7 @@ function otherCityAddFetch () {
   .then(function (resp) {return resp.json() })
   .then(function (data) {
     if (data.message === "city not found" || data.message === "Nothing to geocode") {
-      alert("404: Bad request")
+      return;
     }
     else {
       let cities = document.querySelector('.cities');
@@ -125,7 +120,6 @@ function printOtherAddCityWeather(data, cities, city) {
 
   for (const key of keys) {
     if (window.localStorage.getItem(key) === data.name) {
-      alert("This city already exists");
       city.remove()
       return
     }
@@ -155,7 +149,6 @@ function printOtherAddCityWeather(data, cities, city) {
   else {
     window.localStorage.setItem(Math.max.apply(null, keys) + 1, data.name);
   }
-  console.log(window.localStorage)
 }
 
 // Вывод доп города из хранилища
@@ -222,8 +215,17 @@ function deleteCity(obj) {
     if (window.localStorage.getItem(key) === cityName) {
       window.localStorage.removeItem(key);
       obj.parentElement.parentElement.remove();
-      console.log(window.localStorage)
       return
     }
+  }
+}
+
+
+function buttonWidth(){
+  if (document.documentElement.clientWidth < 768) {
+    document.getElementById("refresh").innerHTML = "<img src='images/icon-set/refresh.png' class='refreshButtonImg'>"
+  }
+  else {
+    document.getElementById("refresh").innerHTML = "Refresh"
   }
 }
