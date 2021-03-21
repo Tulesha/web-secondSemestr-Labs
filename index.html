@@ -9,6 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
+    <script src="js/fetch.js"></script>
+    <script src="js/buttonWidth.js"></script>
+    <script src="js/geolocation.js"></script>
+    <script src="js/printCities.js"></script>
+    <script src="js/addCity.js"></script>
+    <script src="js/deleteCity.js"></script>
   </head>
   <body onresize="buttonWidth()">
       <header>
@@ -18,11 +24,17 @@
 
       <main>
           <div class="headerCity">
-            <p>Loading...</p>
+            <h2>Loading...</h2>
           </div>
 
           <div class="headerInformation">
-            <p>Loading...</p>
+            <ul id="contain">
+              <li id="wind"> <p class="weatherInfo">Wind</p> <p class="weatherInfo">...</p> </li>
+              <li id="cloudy"> <p class="weatherInfo">Cloudy</p> <p class="weatherInfo">...</p> </li>
+              <li id="pressure"> <p class="weatherInfo">Pressure</p> <p class="weatherInfo">...</p> </li>
+              <li id="humidity"> <p class="weatherInfo">Humidity</p> <p class="weatherInfo">...</p> </li>
+              <li id="coordinates"> <p class="weatherInfo">Coordinates</p> <p class="weatherInfo">...</p> </li>
+            </ul>
           </div>
 
           <div class="favourites">
@@ -31,19 +43,43 @@
 
           <div class="favouritesAddCity">
             <input type="text" placeholder="Add new city" class="addNewCity">
-            <button type="submit" class="round" onclick="otherCityAddFetch()">+</button>
+            <button type="submit" class="round" onclick="addCity()">+</button>
           </div>
-
-
 
           <div class="cities">
 
           </div>
       </main>
 
-
       <footer>
         <p class="copyright">&copy;Tulesha</p>
       </footer>
+
+      <template id="templateMainCity">
+        <h2></h2>
+        <div class="headerCityChild">
+          <img class="imgHeaderCity">
+          <p class="headerTempurature"></p>
+        </div>
+      </template>
+
+      <template id="templateOtherCity">
+        <div class="city">
+          <div class="cityInformation">
+            <h4>Loading...</h4>
+            <p class="temperatureInformation"></p>
+            <img class="imgCityWeather">
+            <button type="submit" class="round" onclick="deleteCity(this)">x</button>
+          </div>
+          <ul id="cityContain">
+            <li id="wind"> <p class="weatherInfo">Wind</p> <p class="weatherInfo">...</p> </li>
+            <li id="cloudy"> <p class="weatherInfo">Cloudy</p> <p class="weatherInfo">...</p> </li>
+            <li id="pressure"> <p class="weatherInfo">Pressure</p> <p class="weatherInfo">...</p> </li>
+            <li id="humidity"> <p class="weatherInfo">Humidity</p> <p class="weatherInfo">...</p> </li>
+            <li id="coordinates"> <p class="weatherInfo">Coordinates</p> <p class="weatherInfo">...</p> </li>
+          </ul>
+        </div>
+      </template>
+
   </body>
 </html>
