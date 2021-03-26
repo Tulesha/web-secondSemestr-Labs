@@ -15,6 +15,7 @@
     <script src="js/printCities.js"></script>
     <script src="js/addCity.js"></script>
     <script src="js/deleteCity.js"></script>
+    <script src="js/loadingCity.js"></script>
   </head>
   <body onresize="buttonWidth()">
       <header>
@@ -24,7 +25,11 @@
 
       <main>
           <div class="headerCity">
-            <h2>Loading...</h2>
+            <h2>Loading</h2>
+            <div class="headerCityChild">
+              <img class="imgHeaderCity" src="images/icon-set/refresh.png">
+              <p class="headerTempurature">...</p>
+            </div>
           </div>
 
           <div class="headerInformation">
@@ -55,20 +60,12 @@
         <p class="copyright">&copy;Tulesha</p>
       </footer>
 
-      <template id="templateMainCity">
-        <h2></h2>
-        <div class="headerCityChild">
-          <img class="imgHeaderCity">
-          <p class="headerTempurature"></p>
-        </div>
-      </template>
-
       <template id="templateOtherCity">
         <div class="city">
           <div class="cityInformation">
             <h4>Loading...</h4>
             <p class="temperatureInformation"></p>
-            <img class="imgCityWeather">
+            <img class="imgCityWeather" src="images/icon-set/refresh.png">
             <button type="submit" class="round" onclick="deleteCity(this)">x</button>
           </div>
           <ul id="cityContain">

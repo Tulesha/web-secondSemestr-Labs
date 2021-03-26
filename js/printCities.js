@@ -2,16 +2,10 @@ const icons = "https://openweathermap.org/img/wn/"
 
 function printMainCityWeather(data) {
   let headerCity = document.querySelector('.headerCity');
-  headerCity.innerHTML = "";
 
-  let template = document.querySelector('#templateMainCity');
-
-  template.content.querySelector('h2').textContent = data.name;
-  template.content.querySelector('.imgHeaderCity').src = `${icons}${data.weather[0]['icon']}@2x.png`;
-  template.content.querySelector('.headerTempurature').innerHTML = `${Math.round(data.main.temp)}&#176;C`;
-
-  let clone = document.importNode(template.content, true);
-  headerCity.append(clone);
+  headerCity.querySelector('h2').textContent = data.name;
+  headerCity.querySelector('.imgHeaderCity').src = `${icons}${data.weather[0]['icon']}@2x.png`;
+  headerCity.querySelector('.headerTempurature').innerHTML = `${Math.round(data.main.temp)}&#176;C`;
 
   let ul = document.querySelector('.headerInformation').querySelector('#contain');
 
@@ -20,23 +14,15 @@ function printMainCityWeather(data) {
 
 
 function printOtherCityWeather(data, id) {
-  let cities = document.querySelector('.cities');
+  let city = document.getElementById(`${id}`);
 
-  let template = document.querySelector('#templateOtherCity');
+  city.querySelector('h4').textContent = data.name;
+  city.querySelector('.temperatureInformation').innerHTML = `${Math.round(data.main.temp)}&#176;C`;
+  city.querySelector('.imgCityWeather').src = `${icons}${data.weather[0]['icon']}@2x.png`;
 
-  template.content.querySelector('h4').textContent = data.name;
-  template.content.querySelector('.temperatureInformation').innerHTML = `${Math.round(data.main.temp)}&#176;C`;
-  template.content.querySelector('.imgCityWeather').src = `${icons}${data.weather[0]['icon']}@2x.png`;
-
-  template.content.querySelector('.city').setAttribute("id", `${id}`);
-
-  let ul = template.content.querySelector('#cityContain');
+  let ul = city.querySelector('#cityContain');
 
   fillUl(ul, data);
-
-
-  let clone = document.importNode(template.content, true);
-  cities.append(clone);
 }
 
 
