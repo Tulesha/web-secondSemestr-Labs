@@ -1,26 +1,29 @@
-
 window.onload = function () {
   buttonWidth();
   pressEnter();
   navigator.geolocation.getCurrentPosition(getCurrentLocationWeather, getDefaultLocationWeather);
 
-  let keys = Object.keys(window.localStorage);
+  let onSuccess = (data) => {
+    for (let cityName of data.favouriteCities) {
+      let city = loadingCity();
 
-  for (let key of keys) {
-    let cityName = window.localStorage.getItem(key)
+      let onSuccessFetch = (data) => {
+        printOtherCityWeather(data, city);
+      }
+      
+      let onFailFetch = (e) => {
+        alert(e);
+        city.remove();
+        return;
+      }
 
-    loadingCity();
-
-    let onSuccess = (data) => {
-      document.getElementById("-1").id = key;
-      printOtherCityWeather(data, key);
+      fetchCityByName(cityName).then(onSuccessFetch).catch(onFailFetch);
     }
-
-    let onFail = (e) => {
-      alert(e);
-      document.getElementById("-1").remove();
-    }
-
-    fetchCityByName(cityName).then(onSuccess).catch(onFail);
   }
+  
+  let onFail = (e) => {
+    alert(e);
+  }
+
+  fetchGetFavourites().then(onSuccess).catch(onFail);
 }

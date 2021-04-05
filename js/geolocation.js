@@ -11,7 +11,7 @@ function getCurrentLocationWeather(pos) {
   let lat = pos.coords.latitude;
   let lon = pos.coords.longitude;
 
-  let data = fetchCityByLocation(lat, lon).then(onSuccess).catch(onFail);
+  fetchCityByLocation(lat, lon).then(onSuccess).catch(onFail);
 }
 
 

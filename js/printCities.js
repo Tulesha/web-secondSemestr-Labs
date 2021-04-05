@@ -13,9 +13,7 @@ function printMainCityWeather(data) {
 }
 
 
-function printOtherCityWeather(data, id) {
-  let city = document.getElementById(`${id}`);
-
+function printOtherCityWeather(data, city) {
   city.querySelector('h4').textContent = data.name;
   city.querySelector('.temperatureInformation').innerHTML = `${Math.round(data.main.temp)}&#176;C`;
   city.querySelector('.imgCityWeather').src = `${icons}${data.weather[0]['icon']}@2x.png`;

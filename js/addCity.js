@@ -3,41 +3,25 @@ function addCity() {
 
     let cityName = document.querySelector('.addNewCity').value;
 
-    loadingCity();
+    let city = loadingCity();
 
     let onSuccess = (data) => {
-      let keys = Object.keys(window.localStorage);
-
-      for (const key of keys) {
-        if (window.localStorage.getItem(key) === data.name) {
-          alert("City already exist")
-          document.getElementById("-1").remove();
-          return;
-        }
+      if (data === false) {
+        alert("City already exists")
+        city.remove();
+        return;
       }
 
-      let id;
-
-      if (window.localStorage.length === 0) {
-        id = 0;
-        window.localStorage.setItem(id, data.name);
-      }
-      else {
-        id = Math.max.apply(null, keys) + 1;
-        window.localStorage.setItem(id, data.name);
-      }
-
-      document.getElementById("-1").id = id;
-      printOtherCityWeather(data, id);
+      printOtherCityWeather(data, city);
     }
 
     let onFail = (e) => {
-      document.getElementById("-1").remove();
       alert(e);
+      city.remove();
+      return;
     }
 
-
-    fetchCityByName(cityName).then(onSuccess).catch(onFail);
+    fetchAddCity(cityName).then(onSuccess).catch(onFail);
 
     document.querySelector('.addNewCity').value = "";
   }
