@@ -1,4 +1,4 @@
-const serverURL = "http://localhost:3000";
+const serverURL = "https://blooming-headland-91338.herokuapp.com";
 const weatherURL = `${serverURL}/weather/city`;
 const weatherCoordsURL = `${serverURL}/weather/coordinates`;
 const favouritesURL = `${serverURL}/favourites`;
