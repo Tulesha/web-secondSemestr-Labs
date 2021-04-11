@@ -29,7 +29,7 @@ async function fetchGetFavourites() {
 
 async function fetchAddCity(cityName) {
   let data = await fetch(`${favouritesURL}?q=${cityName}`, {method: "POST"});
-  if (data.status === 200) {
+  if (data.status === 201) {
     return await data.json();
   }
 
@@ -42,7 +42,7 @@ async function fetchAddCity(cityName) {
 async function fetchDeleteCity(cityName) {
   let data = await fetch (`${favouritesURL}?q=${cityName}`, {method: "DELETE"});
 
-  if (data.status !== 200) {
-    throw new Error(`Request is bad. Status ${data.status}`);
+  if (data.status !== 204) {
+    throw new Error(`Request is bad. Status ${data.status}. Reload your page`);
   }
 }
